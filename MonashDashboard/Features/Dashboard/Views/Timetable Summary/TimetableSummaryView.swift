@@ -17,7 +17,7 @@ struct TimetableSummaryView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(25)
+        .padding(20)
     }
 }
 

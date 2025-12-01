@@ -9,13 +9,13 @@ import Foundation
 import Observation
 
 @Observable
-class DashboardViewModel {
+final class DashboardViewModel {
     
     enum State {
-        case inital
+        case idle
         case loading
-        case ready
-        case loadingError(message: String)
+        case loaded
+        case failed(message: String)
     }
     
     var state: State
@@ -25,16 +25,16 @@ class DashboardViewModel {
 
     init(timetableRepository: TimetableRepository) {
         self.timetableRepository = timetableRepository
-        state = .inital
+        state = .idle
     }
     
     func fetchTimetable() async {
         state = .loading
         do {
             timetable = try await timetableRepository.getTimetableSummaryGroupedByDays()
-            state = .ready
+            state = .loaded
         } catch {
-            state = .loadingError(message: error.localizedDescription)
+            state = .failed(message: error.localizedDescription)
         }
     }
 }

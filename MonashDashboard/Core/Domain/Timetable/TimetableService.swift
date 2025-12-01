@@ -18,7 +18,10 @@ enum TimetableServiceError: Error {
 final class TimetableServiceImpl: TimetableService {
 
     func getTimetable() async throws -> MonashDashboard.TimetableResponse {
+        
         // pretend this is using some API client to fetch from an api..
+        try await Task.sleep(for: .seconds(2))
+
         guard let fileUrl = Bundle.main.url(forResource:"timetable-api", withExtension: "json") else {
             throw TimetableServiceError.noData
         }

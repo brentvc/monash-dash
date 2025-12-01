@@ -14,8 +14,15 @@ struct DashboardView: View {
     var body: some View {
         ScrollView {
             VStack {
-                TimetableSummaryView(timetable: viewModel.timetable)
-                Spacer()
+                switch viewModel.state {
+                case .idle, .loading:
+                    ProgressView()
+                        .tint(.black)
+                case .loaded:
+                    TimetableSummaryView(timetable: viewModel.timetable)
+                case .failed(let message):
+                    Text(message)
+                }
             }
             .frame(maxWidth: .infinity)
         }

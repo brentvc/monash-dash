@@ -15,7 +15,8 @@ struct TimetableDayView: View {
         VStack(alignment: .leading, spacing: 25) {
             
             Text(day.date.formattedForDay())
-                .font(.headline)
+                .font(.subheadline)
+                .fontWeight(.bold)
             
             VStack(alignment: .leading, spacing: 20) {
                 ForEach(day.items.indices, id: \.self) { index in
@@ -36,7 +37,7 @@ struct TimetableDayView: View {
             .frame(maxWidth: .infinity)
         }
         .frame(maxWidth: .infinity)
-        .padding(25)
+        .padding(20)
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
