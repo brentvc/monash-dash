@@ -11,4 +11,10 @@ import Observation
 @Observable
 class DashboardViewModel {
     
+    let timetableRepository: TimetableRepository
+    var timetable: [TimetableDay] = []
+
+    init(timetableRepository: TimetableRepository) {
+        self.timetableRepository = timetableRepository
+    }
 }

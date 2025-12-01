@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @Environment(\.appEnvironment) var env
+    
     var body: some View {
         NavigationStack {
-            DashboardView(viewModel: DashboardViewModel())
+            DashboardView(viewModel: DashboardViewModel(timetableRepository: env.timetableRepository))
         }
     }
 }
