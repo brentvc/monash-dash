@@ -1,0 +1,31 @@
+{
+  "sessions": [
+    {
+      "id": "12324",
+      "courseCode": "FIT2001",
+      "title": "Tutorial",
+      "startDate": "2023-03-10T10:30:00+11:00",
+      "endDate": "2023-03-10T13:30:00+11:00",
+      "location": "S4, 13 College Walk, Clayton",
+      "type": "event"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "12325",
+      "courseCode": "MTK1000",
+      "title": "Weekly quizzes",
+      "dueDate": "2023-03-10T13:30:00+11:00",
+      "type": "deadline",
+      "status": "Submitted"
+    },
+    {
+      "id": "12326",
+      "courseCode": "FIT2050",
+      "title": "In-class quizzes submission closes",
+      "dueDate": "2023-03-12T13:30:00+11:00",
+      "type": "deadline",
+      "status": "Submitted"
+    }
+  ]
+}
