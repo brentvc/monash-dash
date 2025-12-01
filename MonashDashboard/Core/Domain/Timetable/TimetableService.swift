@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TimetableService {
-    func getTimetable(limit: Int?) async throws -> TimetableResponse
+    func getTimetable() async throws -> TimetableResponse
 }
 
 enum TimetableServiceError: Error {
@@ -17,7 +17,8 @@ enum TimetableServiceError: Error {
 
 final class TimetableServiceImpl: TimetableService {
 
-    func getTimetable(limit: Int?) async throws -> MonashDashboard.TimetableResponse {
+    func getTimetable() async throws -> MonashDashboard.TimetableResponse {
+        // pretend this is using some API client to fetch from an api..
         guard let fileUrl = Bundle.main.url(forResource:"timetable-api", withExtension: "json") else {
             throw TimetableServiceError.noData
         }

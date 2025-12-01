@@ -8,6 +8,6 @@
 import Foundation
 
 struct TimetableResponse: Codable {
-    var sessions: [TimetableEvent]
+    var sessions: [TimetableSession]
     var tasks: [TimetableTask]
 }

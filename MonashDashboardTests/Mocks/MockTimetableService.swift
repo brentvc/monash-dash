@@ -11,8 +11,12 @@ import Foundation
 final class MockTimetableService: TimetableService {
     
     var testFileName: String = "timetable-api"
+    var mockResponse: TimetableResponse?
     
-    func getTimetable(limit: Int?) async throws -> MonashDashboard.TimetableResponse {
+    func getTimetable() async throws -> MonashDashboard.TimetableResponse {
+        
+        if let mockResponse { return mockResponse }
+        
         guard let fileUrl = Bundle(for: MockTimetableService.self).url(forResource:testFileName, withExtension: "json") else {
             throw TimetableServiceError.noData
         }

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TimetableRepository {
-    func getTimetable(limit: Int?) async throws -> [TimetableItem]
+    func getTimetableSummary() async throws -> [TimetableItem]
 }
 
 final class TimetableRepositoryImpl: TimetableRepository {
@@ -19,9 +19,32 @@ final class TimetableRepositoryImpl: TimetableRepository {
         self.timetableService = timetableService
     }
 
-    func getTimetable(limit: Int?) async throws -> [TimetableItem] {
-        let response = try await timetableService.getTimetable(limit: limit)
-        let items = response.sessions + response.sessions
+    func getTimetableSummary() async throws -> [any TimetableItem] {
+        let response = try await timetableService.getTimetable()
+        let items: [any TimetableItem] = response.sessions + response.tasks
         return items.sorted(by: { $0.calendarDate < $1.calendarDate })
+    }
+    
+    func getTimetableSummaryGroupedByDays() async throws -> [TimetableDay] {
+
+        let response = try await timetableService.getTimetable()
+        let items: [any TimetableItem] = response.sessions + response.tasks
+
+        // group flat items by day into [TimetableDay] (& sort)
+        
+        let calendar = Calendar.current
+        let grouped = Dictionary(grouping: items) { item in
+            calendar.startOfDay(for: item.calendarDate)
+        }
+
+        let sortedDays = grouped.keys.sorted()
+        let timetableDays = sortedDays.map { day in
+            let dayItems = (grouped[day] ?? []).sorted { $0.calendarDate < $1.calendarDate }
+            return TimetableDay(
+                date: day,
+                items: dayItems
+            )
+        }
+        return timetableDays
     }
 }
