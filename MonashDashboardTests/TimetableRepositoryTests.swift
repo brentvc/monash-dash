@@ -30,15 +30,15 @@ struct TimetableRepositoryTests {
             sessions: [
                 TimetableSession(courseCode: "abc",
                                  title: "Lecture",
-                                 startDate: makeDate(2025, 12, 2, 14, 30),
-                                 endDate: makeDate(2025, 12,2, 15, 30),
+                                 startDate: Date.compose(2025, 12, 2, 14, 30),
+                                 endDate: Date.compose(2025, 12,2, 15, 30),
                                  location: "A",
                                  type: .lecture)
                 ,
                 TimetableSession(courseCode: "abc",
                                  title: "Tutorial",
-                                 startDate: makeDate(2025, 12, 1, 9, 30),
-                                 endDate: makeDate(2025, 12, 1, 11, 30),
+                                 startDate: Date.compose(2025, 12, 1, 9, 30),
+                                 endDate: Date.compose(2025, 12, 1, 11, 30),
                                  location: "A",
                                  type: .tutorial
                                 )
@@ -46,7 +46,7 @@ struct TimetableRepositoryTests {
             tasks: [
                 TimetableTask(courseCode: "def",
                               title: "Quiz",
-                              dueDate: makeDate(2025, 11, 30, 20, 0),
+                              dueDate: Date.compose(2025, 11, 30, 20, 0),
                               status: .submitted
                              )
             ]
@@ -92,21 +92,4 @@ struct TimetableRepositoryTests {
             try await repository.getTimetableSummary()
         }
     }
-
-    private func makeDate(
-            _ year: Int,
-            _ month: Int,
-            _ day: Int,
-            _ hour: Int,
-            _ minute: Int = 0
-        ) -> Date {
-            var components = DateComponents()
-            components.year = year
-            components.month = month
-            components.day = day
-            components.hour = hour
-            components.minute = minute
-            let calendar = Calendar(identifier: .gregorian)
-            return calendar.date(from: components)!
-        }
 }
