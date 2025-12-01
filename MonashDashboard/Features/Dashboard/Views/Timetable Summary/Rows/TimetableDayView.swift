@@ -41,3 +41,12 @@ struct TimetableDayView: View {
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 }
+
+#Preview {
+    let data = PreviewData()
+    ScrollView {
+        TimetableDayView(day: data.timetableDays().first!)
+            .padding()
+    }
+    .background(.black.opacity(0.1))
+}

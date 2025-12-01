@@ -23,15 +23,9 @@ struct TimetableSummaryView: View {
 
 #Preview {
     let data = PreviewData()
-    NavigationStack {
-        ScrollView {
-            VStack {
-                TimetableSummaryView(timetable: data.timetableDays())
-                Spacer()
-            }
-            .frame(maxWidth: .infinity)
-        }
-        .background(.black.opacity(0.1))
+    ScrollView {
+        TimetableSummaryView(timetable: data.timetableDays())
     }
+    .background(.black.opacity(0.1))
 }
 
