@@ -10,12 +10,25 @@ import SwiftUI
 struct DashboardView: View {
     
     @State var viewModel: DashboardViewModel
-    
+
     var body: some View {
-        Text("Dashboard")
+        ScrollView {
+            VStack {
+                TimetableSummaryView(timetable: viewModel.timetable)
+                Spacer()
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .background(.black.opacity(0.1))
+        .task {
+            await viewModel.fetchTimetable()
+        }
     }
 }
 
 #Preview {
-    DashboardView(viewModel: DashboardViewModel())
+    let timetableRepository = PreviewData().appEnvironment.timetableRepository
+    NavigationStack {
+        DashboardView(viewModel: DashboardViewModel(timetableRepository: timetableRepository))
+    }
 }

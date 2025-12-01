@@ -20,6 +20,15 @@ struct TimetableSession: TimetableItem, Codable {
     var type: SessionType
     var calendarDate: Date { return startDate }
     
+    var displayTitle: String { courseCode + ": " + title }
+    
+    var startTime: String {
+        return DateFormatter.localizedString(from: startDate, dateStyle: .none, timeStyle: .short)
+    }
+    var endTime: String {
+        return DateFormatter.localizedString(from: endDate, dateStyle: .none, timeStyle: .short)
+    }
+    
     enum SessionType: String, Codable, Sendable {
         case lecture
         case tutorial
@@ -33,8 +42,16 @@ struct TimetableTask: TimetableItem, Codable {
     var status: TaskStatus
     var calendarDate: Date { return dueDate }
     
+    var displayTitle: String { courseCode + ": " + title }
+    
+    var dueTime: String {
+        return DateFormatter.localizedString(from: dueDate, dateStyle: .none, timeStyle: .short)
+    }
+    
+    var displayStatus: String { status.rawValue.capitalized }
+    
     enum TaskStatus: String, Codable, Sendable {
-        case notSubmitted
-        case submitted
+        case notSubmitted = "Not Submitted"
+        case submitted = "Submitted"
     }
 }

@@ -7,7 +7,10 @@
 
 import Foundation
 
-struct TimetableDay: Sendable {
+struct TimetableDay: Sendable, Identifiable {
+    var id: Date { date }
+    
     let date: Date
     let items: [any TimetableItem]
 }
+

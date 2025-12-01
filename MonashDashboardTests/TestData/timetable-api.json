@@ -26,7 +26,7 @@
       "title": "Weekly quizzes",
       "dueDate": "2023-03-10T13:30:00+11:00",
       "type": "deadline",
-      "status": "submitted"
+      "status": "Submitted"
     },
     {
       "id": "12326",
@@ -34,7 +34,7 @@
       "title": "In-class quizzes submission closes",
       "dueDate": "2023-03-12T13:30:00+11:00",
       "type": "deadline",
-      "status": "submitted"
+      "status": "Not Submitted"
     }
   ]
 }

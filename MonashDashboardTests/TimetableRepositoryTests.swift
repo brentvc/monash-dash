@@ -80,7 +80,7 @@ struct TimetableRepositoryTests {
         mockService.testFileName = "timetable-api-malformed"
         let repository = TimetableRepositoryImpl(timetableService: mockService)
         await #expect(throws: (any Error).self) {
-            try await repository.getTimetableSummary()
+            try await repository.getTimetableSummaryGroupedByDays()
         }
     }
     
@@ -89,7 +89,7 @@ struct TimetableRepositoryTests {
         mockService.testFileName = "doesnt-exist"
         let repository = TimetableRepositoryImpl(timetableService: mockService)
         await #expect(throws: (TimetableServiceError.noData).self) {
-            try await repository.getTimetableSummary()
+            try await repository.getTimetableSummaryGroupedByDays()
         }
     }
 }

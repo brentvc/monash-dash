@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TimetableRepository {
-    func getTimetableSummary() async throws -> [TimetableItem]
+    func getTimetableSummaryGroupedByDays() async throws -> [TimetableDay]
 }
 
 final class TimetableRepositoryImpl: TimetableRepository {
@@ -19,12 +19,6 @@ final class TimetableRepositoryImpl: TimetableRepository {
         self.timetableService = timetableService
     }
 
-    func getTimetableSummary() async throws -> [any TimetableItem] {
-        let response = try await timetableService.getTimetable()
-        let items: [any TimetableItem] = response.sessions + response.tasks
-        return items.sorted(by: { $0.calendarDate < $1.calendarDate })
-    }
-    
     func getTimetableSummaryGroupedByDays() async throws -> [TimetableDay] {
 
         let response = try await timetableService.getTimetable()
