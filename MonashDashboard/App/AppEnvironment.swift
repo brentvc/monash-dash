@@ -9,7 +9,13 @@ import Foundation
 import SwiftUI
 
 struct AppEnvironment {
-    // DI stuff
+    
+    let timetableRepository: TimetableRepository
+
+    init() {
+        let timetableService: TimetableService = TimetableServiceImpl()
+        timetableRepository = TimetableRepositoryImpl(timetableService: timetableService)
+    }
 }
 
 extension EnvironmentValues {

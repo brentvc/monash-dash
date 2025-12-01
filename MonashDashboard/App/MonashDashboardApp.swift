@@ -12,7 +12,7 @@ struct MonashDashboardApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.appEnvironment, AppEnvironment())
         }
+        .environment(\.appEnvironment, AppEnvironment())
     }
 }
