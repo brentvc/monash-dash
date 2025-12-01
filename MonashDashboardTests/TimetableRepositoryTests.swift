@@ -24,7 +24,6 @@ struct TimetableRepositoryTests {
 
     @Test func timetable_summary_is_sorted() async throws {
 
-        // given
         let mockService = MockTimetableService()
         let mockResponse = TimetableResponse(
             sessions: [
@@ -33,34 +32,36 @@ struct TimetableRepositoryTests {
                                  startDate: Date.compose(2025, 12, 2, 14, 30),
                                  endDate: Date.compose(2025, 12,2, 15, 30),
                                  location: "A",
-                                 type: .lecture)
+                                 type: .lecture,
+                                 colorHex: "ffffff")
                 ,
                 TimetableSession(courseCode: "abc",
                                  title: "Tutorial",
                                  startDate: Date.compose(2025, 12, 1, 9, 30),
                                  endDate: Date.compose(2025, 12, 1, 11, 30),
                                  location: "A",
-                                 type: .tutorial
-                                )
+                                 type: .tutorial,
+                                 colorHex: "ffffff")
             ],
             tasks: [
                 TimetableTask(courseCode: "def",
                               title: "Quiz",
                               dueDate: Date.compose(2025, 11, 30, 20, 0),
-                              status: .submitted
-                             )
+                              status: .submitted,
+                              colorHex: "ffffff")
             ]
         )
         mockService.mockResponse = mockResponse
         let repository = TimetableRepositoryImpl(timetableService: mockService)
 
-        // when
         let days = try await repository.getTimetableSummaryGroupedByDays()
         
-        // then
+        
+        // days should be sorted
         let expected = days.sorted(by: { $0.date < $1.date })
         #expect(days.map(\.date) == expected.map(\.date), "timetable days should be sorted by date")
         
+        // items within a day should be sorted
         for day in days {
             let expected = day.items.sorted(by: { $0.calendarDate < $1.calendarDate })
             #expect(day.items.map(\.calendarDate) == expected.map(\.calendarDate), "timetable day items should be sorted by date")

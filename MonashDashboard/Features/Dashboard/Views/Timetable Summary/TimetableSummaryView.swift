@@ -16,8 +16,6 @@ struct TimetableSummaryView: View {
                 TimetableDayView(day: day)
             }
         }
-        .frame(maxWidth: .infinity)
-        .padding(20)
     }
 }
 
@@ -25,6 +23,7 @@ struct TimetableSummaryView: View {
     let data = PreviewData()
     ScrollView {
         TimetableSummaryView(timetable: data.timetableDays())
+            .padding(20)
     }
     .background(.black.opacity(0.1))
 }

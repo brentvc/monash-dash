@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IconAccessoryView: View {
     
-    let color: Color = .green
+    let color: Color
     let symbolName: String = "document.fill"
     
     var body: some View {
@@ -18,6 +18,6 @@ struct IconAccessoryView: View {
           .foregroundColor(.white)
           .padding(6)
           .background(color)
-          .clipShape(Circle())
+          .clipShape(.circle)
     }
 }

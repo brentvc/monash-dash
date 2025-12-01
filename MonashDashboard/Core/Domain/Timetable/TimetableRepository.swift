@@ -18,7 +18,9 @@ final class TimetableRepositoryImpl: TimetableRepository {
     init(timetableService: TimetableService) {
         self.timetableService = timetableService
     }
-
+    
+    /// Returns formatted timetable summary data from the TimetableService
+    /// - Returns: array of `TimetableDay` data groupings
     func getTimetableSummaryGroupedByDays() async throws -> [TimetableDay] {
 
         let response = try await timetableService.getTimetable()

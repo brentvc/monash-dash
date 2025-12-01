@@ -7,7 +7,8 @@
       "startDate": "2023-03-10T10:30:00+11:00",
       "endDate": "2023-03-10T13:30:00+11:00",
       "location": "S4, 13 College Walk, Clayton",
-      "type": "tutorial"
+      "type": "tutorial",
+      "colorHex" : "F57894"
     },
     {
       "id": "12324",
@@ -16,7 +17,8 @@
       "startDate": "2023-03-11T14:30:00+11:00",
       "endDate": "2023-03-11T15:30:00+11:00",
       "location": "S3, 13 College Walk, Clayton",
-      "type": "lecture"
+      "type": "lecture",
+      "colorHex" : "F57894"
     }
   ],
   "tasks": [
@@ -26,7 +28,8 @@
       "title": "Weekly quizzes",
       "dueDate": "2023-03-10T13:30:00+11:00",
       "type": "deadline",
-      "status": "Submitted"
+      "status": "Submitted",
+      "colorHex" : "E2AD5E"
     },
     {
       "id": "12326",
@@ -34,7 +37,8 @@
       "title": "In-class quizzes submission closes",
       "dueDate": "2023-03-12T13:30:00+11:00",
       "type": "deadline",
-      "status": "Not Submitted"
+      "status": "Not Submitted",
+      "colorHex" : "8673DD"
     }
   ]
 }

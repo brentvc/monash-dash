@@ -38,6 +38,7 @@ struct TimetableRow<Content: View>: View {
                     Text(primaryDisplayTime)
                         .font(.subheadline)
                         .fontWeight(.semibold)
+                        .foregroundStyle(.black)
                     if let secondaryDisplayTime {
                         Text("-" + secondaryDisplayTime)
                             .font(.footnote)
@@ -51,6 +52,7 @@ struct TimetableRow<Content: View>: View {
                 Text(title)
                     .font(.subheadline)
                     .fontWeight(.semibold)
+                    .foregroundStyle(.black)
                 Text(subtitle)
                     .font(.footnote)
                     .foregroundStyle(.gray)
@@ -63,22 +65,34 @@ struct TimetableRow<Content: View>: View {
 
 #Preview {
     ScrollView {
-        TimetableRow(
-            title: "ABC: Lecture",
-            subtitle: "Computer Science",
-            primaryDisplayTime: "10:00am",
-            secondaryDisplayTime: "11:00am"
-        ) {
-            CapsuleAccessoryView()
-        }
-        TimetableRow(
-            title: "DEF: Tutorial",
-            subtitle: "Computer Science",
-            primaryDisplayTime: "10:00am",
-            secondaryDisplayTime: "11:00am"
-        ) {
-            IconAccessoryView()
+        VStack(spacing: 30) {
+            TimetableRow(
+                title: "Session Title",
+                subtitle: "Session Subtitle",
+                primaryDisplayTime: "10:00am",
+                secondaryDisplayTime: "11:00am"
+            ) {
+                CapsuleAccessoryView(color: .green)
+            }
+
+            TimetableRow(
+                title: "Task Title",
+                subtitle: "Task Subtitle",
+                primaryDisplayTime: "10:00am",
+                secondaryDisplayTime: nil
+            ) {
+                IconAccessoryView(color: .blue)
+            }
+            
+            TimetableRow(
+                title: "minim dolor eu est occaecat nulla aute excepteur in incididunt",
+                subtitle: "minim dolor eu est occaecat nulla aute excepteur in incididunt",
+                primaryDisplayTime: "10:00am",
+                secondaryDisplayTime: nil
+            ) {
+                IconAccessoryView(color: .purple)
+            }
         }
     }
-    .padding()
+    .padding(20)
 }

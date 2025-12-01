@@ -12,19 +12,14 @@ struct DashboardView: View {
     @State var viewModel: DashboardViewModel
 
     var body: some View {
+
         ScrollView {
             VStack {
-                switch viewModel.state {
-                case .idle, .loading:
-                    ProgressView()
-                        .tint(.black)
-                case .loaded:
-                    TimetableSummaryView(timetable: viewModel.timetable)
-                case .failed(let message):
-                    Text(message)
-                }
+                GreetingHeaderView(user: viewModel.user)
+                    .padding(10)
+                TimetableSummaryView(timetable: viewModel.timetable)
             }
-            .frame(maxWidth: .infinity)
+            .padding(20)
         }
         .background(.black.opacity(0.1))
         .task {
@@ -34,8 +29,8 @@ struct DashboardView: View {
 }
 
 #Preview {
-    let timetableRepository = PreviewData().appEnvironment.timetableRepository
-    NavigationStack {
-        DashboardView(viewModel: DashboardViewModel(timetableRepository: timetableRepository))
-    }
+    let env = PreviewData().appEnvironment
+    DashboardView(viewModel: DashboardViewModel(userRepository: env.userRepository,
+                                                timetableRepository: env.timetableRepository)
+    )
 }

@@ -17,14 +17,17 @@ enum TimetableServiceError: Error {
 
 final class TimetableServiceImpl: TimetableService {
 
-    func getTimetable() async throws -> MonashDashboard.TimetableResponse {
-        
-        // pretend this is using some API client to fetch from an api..
-        try await Task.sleep(for: .seconds(2))
-
+    /// Fetches timetable data via API client.
+    /// Simulated for demo purposes, reading API response from a file.
+    /// - Returns: `TimetableResponse` object containing the decoded timetable data.
+    /// - Throws:
+    ///   - `TimetableServiceError.noData` if the bundled JSON file cannot be found.
+    ///   - Any data reading or JSON decoding error
+    func getTimetable() async throws -> TimetableResponse {
         guard let fileUrl = Bundle.main.url(forResource:"timetable-api", withExtension: "json") else {
             throw TimetableServiceError.noData
         }
+
         let data = try Data(contentsOf: fileUrl)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601

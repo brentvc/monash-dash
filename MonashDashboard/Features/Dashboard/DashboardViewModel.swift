@@ -10,21 +10,20 @@ import Observation
 
 @Observable
 final class DashboardViewModel {
-    
-    enum State {
-        case idle
-        case loading
-        case loaded
-        case failed(message: String)
-    }
-    
+
     var state: State
-    
+    let userRepository: UserRepository
     let timetableRepository: TimetableRepository
+    
+    let user: User
     var timetable: [TimetableDay] = []
 
-    init(timetableRepository: TimetableRepository) {
+    init(userRepository: UserRepository,
+         timetableRepository: TimetableRepository
+    ) {
+        self.userRepository = userRepository
         self.timetableRepository = timetableRepository
+        user = userRepository.getLoggedInUser()
         state = .idle
     }
     
@@ -34,7 +33,14 @@ final class DashboardViewModel {
             timetable = try await timetableRepository.getTimetableSummaryGroupedByDays()
             state = .loaded
         } catch {
-            state = .failed(message: error.localizedDescription)
+            state = .failed(message: "Error" + error.localizedDescription)
         }
+    }
+
+    enum State {
+        case idle
+        case loading
+        case loaded
+        case failed(message: String)
     }
 }

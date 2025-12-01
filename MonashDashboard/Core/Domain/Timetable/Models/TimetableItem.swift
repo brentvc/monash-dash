@@ -18,6 +18,7 @@ struct TimetableSession: TimetableItem, Codable {
     var endDate: Date
     var location: String
     var type: SessionType
+    var colorHex: String
     var calendarDate: Date { return startDate }
     
     var displayTitle: String { courseCode + ": " + title }
@@ -40,6 +41,7 @@ struct TimetableTask: TimetableItem, Codable {
     var title: String
     var dueDate: Date
     var status: TaskStatus
+    var colorHex: String
     var calendarDate: Date { return dueDate }
     
     var displayTitle: String { courseCode + ": " + title }

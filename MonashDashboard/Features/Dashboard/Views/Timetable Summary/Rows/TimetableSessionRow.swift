@@ -18,7 +18,7 @@ struct TimetableSessionRow: View {
             primaryDisplayTime: session.startTime,
             secondaryDisplayTime: session.endTime,
             accessory: {
-                CapsuleAccessoryView()
+                CapsuleAccessoryView(color: Color(hex: session.colorHex))
             }
         )
     }

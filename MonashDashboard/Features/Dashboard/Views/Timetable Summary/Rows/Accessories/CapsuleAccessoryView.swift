@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CapsuleAccessoryView: View {
     
-    let color: Color = .red
+    let color: Color
     
     var body: some View {
         Capsule()

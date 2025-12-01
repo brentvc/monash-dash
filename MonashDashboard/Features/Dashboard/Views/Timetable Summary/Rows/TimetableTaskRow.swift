@@ -18,7 +18,7 @@ struct TimetableTaskRow: View {
             primaryDisplayTime: task.dueTime,
             secondaryDisplayTime: nil,
             accessory: {
-                IconAccessoryView()
+                IconAccessoryView(color: Color(hex: task.colorHex))
             }
         )
     }
