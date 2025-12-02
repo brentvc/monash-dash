@@ -20,7 +20,7 @@ extension Date {
             return "Today, \(formatter.string(from: self))"
         } else {
             let formatter = DateFormatter()
-            formatter.dateFormat = "EEE d MMMM"
+            formatter.dateFormat = "EEE, d MMMM"
             return formatter.string(from: self)
         }
     }
