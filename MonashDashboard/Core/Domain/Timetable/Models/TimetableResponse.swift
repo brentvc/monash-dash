@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct TimetableResponse: Codable {
+/// A type representing the mapped, decoded response from the Timetable API..
+///
+/// Holds the session and task items decoded from the response which can then
+/// be processed further.
+struct TimetableResponse: Sendable, Codable {
     var sessions: [TimetableSession]
     var tasks: [TimetableTask]
 }

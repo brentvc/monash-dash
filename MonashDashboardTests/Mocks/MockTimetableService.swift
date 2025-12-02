@@ -8,13 +8,20 @@
 import Foundation
 @testable import MonashDashboard
 
+/// Concrete implementation of `TimetableService` with some
+/// settable properties to stub and return custom `TimetableResponse`
+/// for unit testing.
 final class MockTimetableService: TimetableService {
     
+    /// name of the resource json file to return response data from
     var testFileName: String = "timetable-api"
+    /// injected response to return
     var mockResponse: TimetableResponse?
     
-    func getTimetable() async throws -> MonashDashboard.TimetableResponse {
+    func getTimetable() async throws -> TimetableResponse {
         
+        // if mock response is set, return that. otherwise return response from the
+        // rererenced json file
         if let mockResponse { return mockResponse }
         
         guard let fileUrl = Bundle(for: MockTimetableService.self).url(forResource:testFileName, withExtension: "json") else {

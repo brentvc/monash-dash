@@ -9,6 +9,8 @@ import Foundation
 
 extension Date {
     
+    /// Formats the date to return a specific day string for 'Today' vs any other date.
+    /// - Returns: String for display
     func formattedForDay() -> String {
         let calendar = Calendar.current
 
