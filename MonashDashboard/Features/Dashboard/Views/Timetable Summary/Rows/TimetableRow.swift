@@ -33,7 +33,7 @@ struct TimetableRow<Content: View>: View {
         HStack(alignment: .firstTextBaseline, spacing: 15) {
             HStack {
                 accessory
-                    .frame(width: 25)
+                    .frame(maxWidth: 25)
                 VStack(alignment: .leading) {
                     Text(primaryDisplayTime)
                         .font(.subheadline)
@@ -46,7 +46,7 @@ struct TimetableRow<Content: View>: View {
                     }
                 }
             }
-            .frame(width: 100, alignment: .leading)
+            .frame(maxWidth: 100, alignment: .leading)
             
             VStack(alignment: .leading, spacing: 5) {
                 Text(title)
