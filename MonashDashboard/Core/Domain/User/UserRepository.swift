@@ -11,6 +11,8 @@ protocol UserRepository {
     func getLoggedInUser() -> User
 }
 
+/// Concrete implementation of the user repository that assumes
+/// logged in and returns an example user
 final class UserRepositoryImpl: UserRepository {
     func getLoggedInUser() -> User {
         // pretend this is looking up auth'd user

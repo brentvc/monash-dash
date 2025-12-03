@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Shared view for timetable sessions & tasks, with accessory construction
 struct TimetableDayView: View {
     
     var day: TimetableDay

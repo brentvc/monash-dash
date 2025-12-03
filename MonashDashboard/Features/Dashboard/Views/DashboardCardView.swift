@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// Encapsulates the content of a 'card' in the dashboard UI.  Rounds the corners
+/// and composes the content passed in.
 struct DashboardCardView<Content: View>: View {
     
     private let content: Content
