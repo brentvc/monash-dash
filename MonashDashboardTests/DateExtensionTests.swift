@@ -32,4 +32,13 @@ struct DateExtensionTests {
         let expected = formatter.string(from: tomorrow)
         #expect(result == expected)
     }
+    
+    @Test func shortFormattedTime_has_correct_format_on_the_hour() async throws {
+
+        let date1 = Date.compose(2025, 1, 3, 17, 00)
+        let date2 = Date.compose(2025, 1, 3, 17, 30)
+        
+        #expect(date1.shortFormattedTime() == "5pm")
+        #expect(date2.shortFormattedTime() == "5:30pm")
+    }
 }

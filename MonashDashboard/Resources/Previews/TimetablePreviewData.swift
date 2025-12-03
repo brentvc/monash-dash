@@ -1,5 +1,5 @@
 //
-//  PreviewData.swift
+//  TimetablePreviewData.swift
 //  MonashDashboard
 //
 //  Created by Brent Chionh on 1/12/2025.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-/// Provides mock data for SwiftUI Previews
-struct PreviewData {
+/// Provides mock data for Timetable SwiftUI Previews
+struct TimetablePreviewData {
     
     let appEnvironment = AppEnvironment()
     

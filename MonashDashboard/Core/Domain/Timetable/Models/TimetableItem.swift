@@ -72,7 +72,7 @@ struct TimetableTask: TimetableItem, Codable {
     var displayTitle: String { courseCode + ": " + title }
     
     var dueTime: String {
-        return DateFormatter.localizedString(from: dueDate, dateStyle: .none, timeStyle: .short)
+        dueDate.shortFormattedTime()
     }
     
     var displayStatus: String { status.rawValue.capitalized }

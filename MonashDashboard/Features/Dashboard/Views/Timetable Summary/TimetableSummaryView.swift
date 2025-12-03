@@ -20,7 +20,7 @@ struct TimetableSummaryView: View {
 }
 
 #Preview {
-    let data = PreviewData()
+    let data = TimetablePreviewData()
     ScrollView {
         TimetableSummaryView(timetable: data.timetableDays())
             .padding(20)
