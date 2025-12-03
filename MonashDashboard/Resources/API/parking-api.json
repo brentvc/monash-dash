@@ -1,0 +1,34 @@
+{
+  "carParks": [
+    {
+      "name": "North (multi-level)",
+      "permits": [
+        {
+          "name": "B",
+          "colorHex": "4A90E2",
+          "availableSpaces": 12
+        },
+        {
+          "permitId": "R",
+          "colorHex": "D0021B",
+          "availableSpaces": 5
+        }
+      ]
+    },
+    {
+      "name": "West 1",
+      "permits": [
+        {
+          "name": "B",
+          "colorHex": "4A90E2",
+          "availableSpaces": 0
+        },
+        {
+          "permitId": "R",
+          "colorHex": "D0021B",
+          "availableSpaces": 2
+        }
+      ]
+    }
+  ]
+}
