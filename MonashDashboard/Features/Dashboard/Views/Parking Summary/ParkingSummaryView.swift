@@ -32,5 +32,5 @@ struct ParkingSummaryView: View {
         ParkingSummaryView(carParks: data.carParks())
             .padding(20)
     }
-    .background(.lightGray)
+    .background(.lighterGray)
 }

@@ -42,7 +42,7 @@ struct TimetableRow<Content: View>: View {
                     if let secondaryDisplayTime {
                         Text("-" + secondaryDisplayTime)
                             .font(.footnote)
-                            .foregroundStyle(.darkGray)
+                            .foregroundStyle(.darkerGray)
                     }
                 }
             }
@@ -55,7 +55,7 @@ struct TimetableRow<Content: View>: View {
                     .foregroundStyle(.black)
                 Text(subtitle)
                     .font(.footnote)
-                    .foregroundStyle(.darkGray)
+                    .foregroundStyle(.darkerGray)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }

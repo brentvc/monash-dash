@@ -50,5 +50,5 @@ struct TimetableDayView: View {
         TimetableDayView(day: data.timetableDays().first!)
             .padding()
     }
-    .background(.lightGray)
+    .background(.lighterGray)
 }

@@ -22,7 +22,7 @@ struct DashboardView: View {
             }
             .padding(20)
         }
-        .background(.lightGray)
+        .background(.lighterGray)
         .task {
             await viewModel.fetchData()
         }
