@@ -9,6 +9,8 @@ import Foundation
 import Testing
 @testable import MonashDashboard
 
+/// Tests the `TimetableRepository` which manages timetable data access..
+/// The `TimetableService` dependency is mocked to return test data.
 struct TimetableRepositoryTests {
 
     @Test func valid_timetable_summary_returned() async throws {
@@ -78,7 +80,7 @@ struct TimetableRepositoryTests {
     
     @Test func error_thrown_if_service_data_is_malformed() async throws {
         let mockService = MockTimetableService()
-        mockService.testFileName = "timetable-api-malformed"
+        mockService.testFileName = "api-malformed"
         let repository = TimetableRepositoryImpl(timetableService: mockService)
         await #expect(throws: (any Error).self) {
             try await repository.getTimetableSummaryGroupedByDays()

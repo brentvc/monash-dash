@@ -9,6 +9,7 @@ import Foundation
 import Testing
 @testable import MonashDashboard
 
+/// Tests the date extensions for formatting the display day.
 struct DateExtensionTests {
     
     @Test func formattedForDay_today_has_correct_format() async throws {

@@ -16,16 +16,15 @@ import Foundation
 /// - Implementations may throw errors related to data unavailability, transport,
 ///   or decoding. See concrete implementations for specific error types.
 ///
-/// Testing:
-/// - Protocol-based design facilitates dependency injection and mocking in tests.
 protocol TimetableService {
+
     /// Retrieves the user's timetable data from a resource (e.g network client / file).
     ///
     /// - Returns: A `TimetableResponse` representing the decoded raw timetable data.
     /// - Throws:
-    ///   - `TimetableServiceError.noData` if the bundled JSON file cannot be located.
+    ///   - `TimetableServiceError.noData` if the resource cannot be located.
     ///   - `DecodingError` if the JSON structure does not match `TimetableResponse`.
-    ///   - Any other `Error` thrown while reading file data from disk.
+    ///   - Any other `Error` thrown while retrieving the resource.
     func getTimetable() async throws -> TimetableResponse
 }
 
@@ -36,6 +35,9 @@ enum TimetableServiceError: Error {
 
 /// A concrete implementation of `TimetableService` that loads timetable data
 /// from a bundled JSON file to simulate a network-backed API.
+/// 
+/// Pretend this implementation is using an API client which would call an API with
+/// the relevant authentication.
 final class TimetableServiceImpl: TimetableService {
 
     func getTimetable() async throws -> TimetableResponse {
