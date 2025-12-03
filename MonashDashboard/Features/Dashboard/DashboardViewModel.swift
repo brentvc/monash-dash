@@ -11,14 +11,15 @@ import Observation
 @Observable
 final class DashboardViewModel {
 
-    var state: State
-    let userRepository: UserRepository
-    let timetableRepository: TimetableRepository
-    let parkingRepository: ParkingRepository
-    
-    let user: User
-    var timetable: [TimetableDay] = []
-    var carParks: [CarPark] = []
+    private let userRepository: UserRepository
+    private let timetableRepository: TimetableRepository
+    private let parkingRepository: ParkingRepository
+
+    private(set) var state: State
+    private(set) var user: User
+    private(set) var timetable: [TimetableDay] = []
+    private(set) var carParks: [CarPark] = []
+    private(set) var alertMessage: String?
 
     init(userRepository: UserRepository,
          timetableRepository: TimetableRepository,
@@ -32,17 +33,19 @@ final class DashboardViewModel {
     }
 
     func fetchData() async {
+        alertMessage = nil
         state = .loading
         async let fetchTimetableTask: () = fetchTimetable()
         async let fetchParkingTask: () = fetchParking()
         _ = await (fetchTimetableTask, fetchParkingTask)
+        state = .loaded
     }
     
     private func fetchTimetable() async {
         do {
             timetable = try await timetableRepository.getTimetableSummaryGroupedByDays()
         } catch {
-            state = .failed(message: "Error" + error.localizedDescription)
+            alertMessage = "Fetch issue: " + error.localizedDescription
         }
     }
     
@@ -50,7 +53,7 @@ final class DashboardViewModel {
         do {
             carParks = try await parkingRepository.getCarParks()
         } catch {
-            state = .failed(message: "Error" + error.localizedDescription)
+            alertMessage = "Fetch issue:" + error.localizedDescription
         }
     }
 
@@ -58,6 +61,5 @@ final class DashboardViewModel {
         case idle
         case loading
         case loaded
-        case failed(message: String)
     }
 }
