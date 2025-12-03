@@ -32,5 +32,5 @@ struct DashboardCardView<Content: View>: View {
         }
     }
     .padding()
-    .background(.black.opacity(0.1))
+    .background(.lightGray)
 }

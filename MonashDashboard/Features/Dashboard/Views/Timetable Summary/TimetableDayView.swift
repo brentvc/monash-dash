@@ -18,6 +18,7 @@ struct TimetableDayView: View {
                 Text(day.date.formattedForDay())
                     .font(.subheadline)
                     .fontWeight(.bold)
+                    .foregroundStyle(.black)
                 
                 VStack(alignment: .leading, spacing: 20) {
                     ForEach(day.items.indices, id: \.self) { index in
@@ -47,5 +48,5 @@ struct TimetableDayView: View {
         TimetableDayView(day: data.timetableDays().first!)
             .padding()
     }
-    .background(.black.opacity(0.1))
+    .background(.lightGray)
 }

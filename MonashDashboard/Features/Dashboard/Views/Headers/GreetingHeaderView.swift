@@ -16,6 +16,7 @@ struct GreetingHeaderView: View {
             Text("Hey, " + user.firstName)
                 .font(.headline)
                 .fontWeight(.heavy)
+                .foregroundStyle(.black)
             Spacer()
         }
     }

@@ -16,7 +16,7 @@ struct SummaryHeaderView: View {
             Text(title)
                 .font(.subheadline)
                 .fontWeight(.semibold)
-                .foregroundStyle(.gray)
+                .foregroundStyle(.darkGray)
             Spacer()
         }
     }

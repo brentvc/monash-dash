@@ -12,7 +12,6 @@ struct DashboardView: View {
     @State var viewModel: DashboardViewModel
 
     var body: some View {
-
         ScrollView {
             VStack {
                 GreetingHeaderView(user: viewModel.user)
@@ -23,7 +22,7 @@ struct DashboardView: View {
             }
             .padding(20)
         }
-        .background(.black.opacity(0.1))
+        .background(.lightGray)
         .task {
             await viewModel.fetchData()
         }

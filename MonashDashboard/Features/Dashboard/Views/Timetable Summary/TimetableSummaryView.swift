@@ -25,6 +25,6 @@ struct TimetableSummaryView: View {
         TimetableSummaryView(timetable: data.timetableDays())
             .padding(20)
     }
-    .background(.black.opacity(0.1))
+    .background(.lightGray)
 }
 

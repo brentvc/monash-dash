@@ -15,6 +15,7 @@ struct ParkingRow: View {
         HStack {
             Text(carPark.name)
                 .font(.subheadline)
+                .fontWeight(.semibold)
                 .foregroundStyle(.black)
             Spacer()
             HStack(spacing: 20) {
