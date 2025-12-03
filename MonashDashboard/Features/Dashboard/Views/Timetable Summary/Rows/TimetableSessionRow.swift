@@ -21,5 +21,7 @@ struct TimetableSessionRow: View {
                 CapsuleAccessoryView(color: Color(hex: session.colorHex))
             }
         )
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(session.voiceoverDescription)
     }
 }

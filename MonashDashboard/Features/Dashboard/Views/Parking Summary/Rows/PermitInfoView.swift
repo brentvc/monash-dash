@@ -13,7 +13,7 @@ struct PermitInfoView: View {
     
     var body: some View {
         HStack(spacing:5) {
-            Text(permit.name)
+            Text(permit.abbreviated)
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .foregroundStyle(.white)

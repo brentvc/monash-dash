@@ -22,5 +22,9 @@ struct TimetableDay: Sendable, Identifiable {
     var id: Date { date }
     let date: Date
     let items: [any TimetableItem]
+    
+    var voiceoverDescription: String {
+        "Timetable.  \(date.formattedForDay())"
+    }
 }
 

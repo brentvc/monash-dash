@@ -19,6 +19,7 @@ struct SummaryHeaderView: View {
                 .foregroundStyle(.darkGray)
             Spacer()
         }
+        .accessibilityLabel("Section - \(title)")
     }
 }
 

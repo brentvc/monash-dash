@@ -4,12 +4,12 @@
       "name": "North (multi-level)",
       "permits": [
         {
-          "name": "B",
+          "name": "Blue",
           "colorHex": "4A90E2",
           "availableSpaces": 12
         },
         {
-          "name": "R",
+          "name": "Red",
           "colorHex": "F53F1F",
           "availableSpaces": 5
         }
@@ -19,12 +19,12 @@
       "name": "West 1",
       "permits": [
         {
-          "name": "B",
+          "name": "Blue",
           "colorHex": "4A90E2",
           "availableSpaces": 0
         },
         {
-          "name": "R",
+          "name": "Red",
           "colorHex": "F53F1F",
           "availableSpaces": 2
         }

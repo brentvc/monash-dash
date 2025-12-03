@@ -19,6 +19,7 @@ struct TimetableDayView: View {
                     .font(.subheadline)
                     .fontWeight(.bold)
                     .foregroundStyle(.black)
+                    .accessibilityLabel(day.voiceoverDescription)
                 
                 VStack(alignment: .leading, spacing: 20) {
                     ForEach(day.items.indices, id: \.self) { index in

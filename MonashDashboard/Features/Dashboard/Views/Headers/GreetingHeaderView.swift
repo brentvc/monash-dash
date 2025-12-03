@@ -19,6 +19,7 @@ struct GreetingHeaderView: View {
                 .foregroundStyle(.black)
             Spacer()
         }
+        .accessibilityLabel("Greeting - Hey, \(user.firstName)")
     }
 }
 

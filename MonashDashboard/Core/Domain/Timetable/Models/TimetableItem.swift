@@ -48,6 +48,10 @@ struct TimetableSession: TimetableItem, Codable {
         return DateFormatter.localizedString(from: endDate, dateStyle: .none, timeStyle: .short)
     }
     
+    var voiceoverDescription: String {
+        return "Session: \(displayTitle).  From: \(startTime) to \(endTime).  Location: \(location)."
+    }
+    
     enum SessionType: String, Codable, Sendable {
         case lecture
         case tutorial
@@ -80,5 +84,9 @@ struct TimetableTask: TimetableItem, Codable {
     enum TaskStatus: String, Codable, Sendable {
         case notSubmitted = "Not Submitted"
         case submitted = "Submitted"
+    }
+    
+    var voiceoverDescription: String {
+        return "Task: \(displayTitle).  Due: \(dueTime).  Status: \(displayStatus)."
     }
 }

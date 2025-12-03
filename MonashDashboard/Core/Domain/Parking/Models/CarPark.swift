@@ -21,4 +21,8 @@ struct CarPark: Sendable, Codable, Identifiable {
     var id: String { name }
     let name: String
     let permits: [ParkingPermit]
+    
+    var voiceoverDescription: String {
+        "Car park: \(name).  \(permits.map { $0.voiceOverDescription })"
+    }
 }

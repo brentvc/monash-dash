@@ -21,5 +21,7 @@ struct TimetableTaskRow: View {
                 IconAccessoryView(color: Color(hex: task.colorHex))
             }
         )
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(task.voiceoverDescription)
     }
 }

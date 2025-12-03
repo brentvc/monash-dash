@@ -22,4 +22,9 @@ struct ParkingPermit: Sendable, Codable, Identifiable {
     let name: String
     let colorHex: String
     let availableSpaces: Int
+    var abbreviated: String { name.first?.uppercased() ?? name }
+    
+    var voiceOverDescription: String {
+        "Permit type: \(name), \(availableSpaces) available spaces."
+    }
 }

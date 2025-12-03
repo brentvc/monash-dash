@@ -24,6 +24,8 @@ struct ParkingRow: View {
                 }
             }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(carPark.voiceoverDescription)
     }
 }
 
