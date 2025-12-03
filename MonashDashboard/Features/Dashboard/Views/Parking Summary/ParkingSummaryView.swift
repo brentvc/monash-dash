@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct ParkingSummaryView: View {
+    
+    let carParks: [CarPark]
+    
     var body: some View {
-        Text("Parking Summary View")
+        VStack {
+            SummaryHeaderView(title: String(localized: "Available parking spots"))
+                .padding(.leading, 10)
+            DashboardCardView {
+                VStack(spacing: 15) {
+                    ForEach(carParks) { carPark in
+                        ParkingRow(carPark: carPark)
+                    }
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    ParkingSummaryView()
+    let data = ParkingPreviewData()
+    ScrollView {
+        ParkingSummaryView(carParks: data.carParks())
+            .padding(20)
+    }
+    .background(.black.opacity(0.1))
 }

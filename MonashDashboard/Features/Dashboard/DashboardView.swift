@@ -18,19 +18,22 @@ struct DashboardView: View {
                 GreetingHeaderView(user: viewModel.user)
                     .padding(10)
                 TimetableSummaryView(timetable: viewModel.timetable)
+                Spacer(minLength: 60)
+                ParkingSummaryView(carParks: viewModel.carParks)
             }
             .padding(20)
         }
         .background(.black.opacity(0.1))
         .task {
-            await viewModel.fetchTimetable()
+            await viewModel.fetchData()
         }
     }
 }
 
 #Preview {
-    let env = PreviewData().appEnvironment
+    let env = TimetablePreviewData().appEnvironment
     DashboardView(viewModel: DashboardViewModel(userRepository: env.userRepository,
-                                                timetableRepository: env.timetableRepository)
-    )
+                                                timetableRepository: env.timetableRepository,
+                                                parkingRepository: env.parkingRepository)
+                  )
 }

@@ -9,8 +9,8 @@
           "availableSpaces": 12
         },
         {
-          "permitId": "R",
-          "colorHex": "D0021B",
+          "name": "R",
+          "colorHex": "F53F1F",
           "availableSpaces": 5
         }
       ]
@@ -24,8 +24,8 @@
           "availableSpaces": 0
         },
         {
-          "permitId": "R",
-          "colorHex": "D0021B",
+          "name": "R",
+          "colorHex": "F53F1F",
           "availableSpaces": 2
         }
       ]

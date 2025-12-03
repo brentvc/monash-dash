@@ -14,24 +14,41 @@ final class DashboardViewModel {
     var state: State
     let userRepository: UserRepository
     let timetableRepository: TimetableRepository
+    let parkingRepository: ParkingRepository
     
     let user: User
     var timetable: [TimetableDay] = []
+    var carParks: [CarPark] = []
 
     init(userRepository: UserRepository,
-         timetableRepository: TimetableRepository
+         timetableRepository: TimetableRepository,
+         parkingRepository: ParkingRepository
     ) {
         self.userRepository = userRepository
         self.timetableRepository = timetableRepository
+        self.parkingRepository = parkingRepository
         user = userRepository.getLoggedInUser()
         state = .idle
     }
-    
-    func fetchTimetable() async {
+
+    func fetchData() async {
         state = .loading
+        async let fetchTimetableTask: () = fetchTimetable()
+        async let fetchParkingTask: () = fetchParking()
+        _ = await (fetchTimetableTask, fetchParkingTask)
+    }
+    
+    private func fetchTimetable() async {
         do {
             timetable = try await timetableRepository.getTimetableSummaryGroupedByDays()
-            state = .loaded
+        } catch {
+            state = .failed(message: "Error" + error.localizedDescription)
+        }
+    }
+    
+    private func fetchParking() async {
+        do {
+            carParks = try await parkingRepository.getCarParks()
         } catch {
             state = .failed(message: "Error" + error.localizedDescription)
         }

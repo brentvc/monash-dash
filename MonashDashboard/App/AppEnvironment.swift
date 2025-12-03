@@ -12,11 +12,16 @@ import SwiftUI
 struct AppEnvironment {
     
     let timetableRepository: TimetableRepository
+    let parkingRepository: ParkingRepository
     let userRepository: UserRepository
 
     init() {
         let timetableService: TimetableService = TimetableServiceImpl()
         timetableRepository = TimetableRepositoryImpl(timetableService: timetableService)
+        
+        let parkingService: ParkingService = ParkingServiceImpl()
+        parkingRepository = ParkingRepositoryImpl(parkingService: parkingService)
+
         userRepository = UserRepositoryImpl()
     }
 }
